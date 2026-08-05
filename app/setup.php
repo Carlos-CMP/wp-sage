@@ -154,6 +154,18 @@ add_action('init', function () {
 });
 
 /**
+ * Register ACF field groups.
+ *
+ * El constructor de CourseFields engancha su propio hook 'acf/init'
+ * (recomendado por ACF para registrar field groups en PHP), así que
+ * solo hace falta instanciar la clase una vez.
+ *
+ * @return void
+ */
+$course_fields = new \App\Fields\CourseFields();
+add_filter('acf/format_value/name=precio', [$course_fields, 'format_precio']);
+
+/**
  * Register the theme sidebars.
  *
  * @return void
