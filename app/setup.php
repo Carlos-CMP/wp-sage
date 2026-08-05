@@ -139,6 +139,19 @@ add_action('after_setup_theme', function () {
 }, 20);
 
 /**
+ * Register Custom Post Types.
+ *
+ * Se hace dentro de 'init' porque es el hook estándar de WordPress para
+ * registrar post types (antes de 'init' la API todavía no está lista
+ * para esto).
+ *
+ * @return void
+ */
+add_action('init', function () {
+    \App\PostTypes\Course::register();
+});
+
+/**
  * Register the theme sidebars.
  *
  * @return void
