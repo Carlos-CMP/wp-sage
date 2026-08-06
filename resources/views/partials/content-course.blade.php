@@ -29,24 +29,34 @@
     @endif
   </div>
 
-  <div class="flex-1 text-ink-muted text-[0.95rem] leading-[1.6] [&>p]:m-0">
-    @php(the_excerpt())
-  </div>
+  {{--
+    Sin flex-1 fijo: si no hay excerpt (10 de los 13 cursos tienen
+    post_content vacío a propósito) este bloque simplemente no existe, en
+    vez de reservar un hueco vacío. El pie de precio/duración se ancla
+    abajo con mt-auto sobre el propio article en flex-col, así que las
+    cards siguen alineando su pie entre sí dentro de la misma fila del
+    grid tengan o no extracto.
+  --}}
+  @if (get_the_excerpt())
+    <div class="text-ink-muted text-[0.95rem] leading-[1.6] [&>p]:m-0">
+      @php(the_excerpt())
+    </div>
+  @endif
 
   @if ($duracion || $precio !== '')
-    <div class="flex items-center justify-between gap-4 border-t border-border pt-4">
+    {{--
+      El precio es el dato que decide la compra, la duración es de apoyo:
+      se diferencian por tamaño/peso (jerarquía tipográfica), no con
+      etiquetas "DURACIÓN"/"PRECIO" encima de cada valor — "45 horas" y
+      "130 €" ya se leen solos por su unidad, la etiqueta era redundante.
+    --}}
+    <div class="mt-auto flex items-baseline justify-between gap-4 border-t border-border pt-4">
       @if ($duracion)
-        <span class="block text-[0.95rem] text-ink tabular-nums">
-          <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.04em] text-ink-muted">{{ __('Duración', 'novicell-sage-test') }}</span>
-          {{ $duracion }}
-        </span>
+        <span class="text-sm text-ink-muted">{{ $duracion }}</span>
       @endif
 
       @if ($precio !== '')
-        <span class="block text-right text-[0.95rem] text-ink tabular-nums">
-          <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.04em] text-ink-muted">{{ __('Precio', 'novicell-sage-test') }}</span>
-          {{ $precio }}
-        </span>
+        <span class="ml-auto text-xl font-bold text-ink tabular-nums">{{ $precio }}</span>
       @endif
     </div>
   @endif
