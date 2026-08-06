@@ -48,6 +48,7 @@ class CourseHighlightBlock
             // padre, así que un $title aquí pisaría al de cada curso.
             'heading' => $attributes['title'] ?? '',
             'courses' => $courses,
+            'archiveUrl' => get_post_type_archive_link('course'),
         ])->render();
     }
 }

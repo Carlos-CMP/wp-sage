@@ -1,8 +1,8 @@
 <section>
-  <h2 class="course-highlight__title">{{ $heading }}</h2>
+  <h2 class="m-0 mb-2 text-[clamp(1.35rem,3vw,1.75rem)] font-bold text-ink">{{ $heading }}</h2>
 
   @if (count($courses))
-    <div class="course-highlight__list">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {{--
         Secondary loop: hay que asignar $post directamente (no basta con
         setup_postdata, que solo prepara datos secundarios como el autor y
@@ -20,7 +20,15 @@
       @endforeach
       @php(wp_reset_postdata())
     </div>
+
+    @if ($archiveUrl)
+      <p class="mt-8">
+        <a href="{{ $archiveUrl }}" class="inline-flex items-center text-sm font-semibold text-accent no-underline hover:underline [text-underline-offset:0.15em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[3px] focus-visible:rounded-[2px]">
+          {{ __('Ver todos los cursos', 'novicell-sage-test') }} &rarr;
+        </a>
+      </p>
+    @endif
   @else
-    <p class="course-highlight__empty">{{ __('Todavía no hay cursos publicados.', 'novicell-sage-test') }}</p>
+    <p class="text-ink-muted">{{ __('Todavía no hay cursos publicados.', 'novicell-sage-test') }}</p>
   @endif
 </section>
