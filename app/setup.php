@@ -166,6 +166,28 @@ $course_fields = new \App\Fields\CourseFields();
 add_filter('acf/format_value/name=precio', [$course_fields, 'format_precio']);
 
 /**
+ * Register a dedicated block category for custom Novicell blocks, en vez
+ * de que aparezcan sueltos en la categoría genérica "Widgets" del inserter.
+ *
+ * @return array
+ */
+add_filter('block_categories_all', function ($categories) {
+    return array_merge(
+        [['slug' => 'novicell', 'title' => __('Novicell', 'novicell-sage-test')]],
+        $categories
+    );
+});
+
+/**
+ * Register custom Gutenberg blocks.
+ *
+ * @return void
+ */
+add_action('init', function () {
+    \App\Blocks\CourseHighlightBlock::register();
+});
+
+/**
  * Register the theme sidebars.
  *
  * @return void

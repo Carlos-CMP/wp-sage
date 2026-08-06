@@ -226,3 +226,20 @@
   line-height: 1.7;
   color: var(--ink);
 }
+
+/* --- Bloque "Destacado de cursos" --- */
+
+.course-highlight__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.course-highlight__list {
+  border-top: 1px solid var(--border);
+}
+
+.course-highlight__empty {
+  color: var(--ink-muted);
+}
