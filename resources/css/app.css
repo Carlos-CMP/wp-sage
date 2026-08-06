@@ -1,3 +1,13 @@
+/*
+ * Serif de apoyo, solo para el titular del hero de la home (Petrona:
+ * serif humanista con carácter propio, no un Didone de alto contraste ni
+ * uno de los serifs que se repiten en casi cualquier diseño generado por
+ * IA). El resto de la web se queda en la sans de sistema de Tailwind —
+ * el peso tipográfico se gasta en un único sitio. @import debe ir antes
+ * que cualquier otra regla real (incluida la expansión de
+ * @import "tailwindcss"), si no el navegador la ignora.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Petrona:wght@600&display=swap');
 @import "tailwindcss" theme(static);
 @source "../../app/**/*.php";
 @source "../**/*.blade.php";
@@ -13,7 +23,8 @@
  * utilidades a partir de ellos automáticamente: --color-accent produce
  * bg-accent/text-accent/border-accent, etc. La intensidad "tint" del
  * nivel intermedio ya no necesita su propio token: se resuelve con la
- * utilidad de opacidad de Tailwind (bg-accent/10).
+ * utilidad de opacidad de Tailwind (bg-accent/10). --font-display genera
+ * la utilidad font-display (font-family), reservada al titular del hero.
  */
 @theme {
   --color-ink: #18181b;
@@ -22,4 +33,5 @@
   --color-surface: #f4f4f5;
   --color-border: #e4e4e7;
   --color-accent: #9d174d;
+  --font-display: "Petrona", ui-serif, serif;
 }

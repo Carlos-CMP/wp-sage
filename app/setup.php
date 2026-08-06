@@ -185,6 +185,7 @@ add_filter('block_categories_all', function ($categories) {
  */
 add_action('init', function () {
     \App\Blocks\CourseHighlightBlock::register();
+    \App\Blocks\CatalogHeroBlock::register();
 });
 
 /**
