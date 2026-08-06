@@ -14,8 +14,11 @@ Theme de WordPress ([Roots Sage 11](https://roots.io/sage/)) que implementa un c
 - Taxonomías `course_subject` (jerárquica) y `course_level` (plana) (`app/Taxonomies/`)
 - Campos ACF `precio` y `duracion`, registrados vía `acf_add_local_field_group()` (`app/Fields/CourseFields.php`)
 - Vistas Blade: `resources/views/partials/content-course.blade.php` (listado) y `content-single-course.blade.php` (detalle), alimentadas por el View Composer `App\View\Composers\CourseMeta`
+- Bloques Gutenberg dinámicos en React, para componer la home desde `wp-admin` sin tocar código: `novicell/course-highlight` (listado de cursos destacados) y `novicell/catalog-hero` (cabecera con índice de materias reales), registrados en `app/Blocks/` (PHP, `render_callback`) + `resources/js/blocks/` (JS, editor)
 
-El contexto de producto (usuarios, alcance, decisiones de diseño) está en [`PRODUCT.md`](./PRODUCT.md).
+## Diseño
+
+La dirección visual "Restrained" (neutros + un único acento) y los tokens de `resources/css/app.css` se generaron con la skill `impeccable`/`frontend-design`. El contexto de producto (usuarios, alcance, decisiones de diseño) está en [`PRODUCT.md`](./PRODUCT.md).
 
 ## Desarrollo
 
